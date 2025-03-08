@@ -1,11 +1,11 @@
-from flask import jsonify, request, abort, make_response, redirect, url_for
+from flask import jsonify, request, abort, render_template
 from todo.app import app, db
 from todo.models import Task, Questionnaire, Question
 
-# Route pour la page d'accueil
 @app.route('/')
 def index():
-    return redirect(url_for('get_tasks'))
+    return render_template('todo.html')
+
 
 # Route pour obtenir toutes les tâches
 @app.route('/todo/api/v1.0/tasks', methods=['GET'])

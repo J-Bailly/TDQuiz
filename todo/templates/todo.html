@@ -1,47 +1,48 @@
 <!DOCTYPE html>
 <html lang="fr">
-  <head>
+<head>
     <meta charset="utf-8"/>
-    <title>Vos tâches</title>
-
+    <title>Gestion des Questionnaires</title>
     <link rel="stylesheet" href="{{ url_for('static', filename='css/flex.css') }}"/>
     <script src="{{ url_for('static', filename='js/jquery.min.js') }}"></script>
     <script src="{{ url_for('static', filename='js/todo.js') }}"></script>
-    <script>
-      document.addEventListener("DOMContentLoaded", function () {
-          fetch("/todo/api/v1.0/tasks")
-              .then(response => response.json())
-              .then(data => console.log("Tâches récupérées :", data))
-              .catch(error => console.error("Erreur lors de la récupération des tâches :", error));
-      });
-      </script>      
-  </head>
-  <body>
- <header>
- <h1>Choses à faire</h1>
- </header>
+</head>
 
- <div id='main'>
+<body>
+    <header>
+        <h1>Gestion des Questionnaires</h1>
+    </header>
 
-    <nav id="nav1">
-      <h2>Todo</h2>
-        <input id="button" type="button" value="Recuperer les taches" />
-        <div id="taches">
-        </div>
-    </nav>
+    <div id='main'>
+        <nav id="nav1">
+            <h2>Mode</h2>
+            <button id="createMode">Créer un Questionnaire</button>
+            <button id="answerMode">Répondre à un Questionnaire</button>
+        </nav>
 
-    <article>
-      <h2>Editeur de Tâches</h2>
-      <section id="tools">
-        <img id="add" src="img/new.png" alt="Nouvelle chose à faire"/>
-        <img id="del" src="img/delete.png" alt="Enlever cette tache"/>
-      </section>
-      <section id="currenttask"> </section>
-    </article>
- </div>
- <footer>
- <h4>©Département Informatique ⚛ IUT d'Orléans</h4>
- </footer>
+        <section id="creationSection" style="display: none;">
+            <h2>Création des Questionnaires</h2>
+            <button id="loadQuizzes">Afficher les Questionnaires</button>
+            <button id="addQuiz">Créer un Questionnaire</button>
+            
+            <div id="questionnaires"></div>
+            <div id="currentQuiz"></div>
+          
+            <div id="questionList"></div>
+            <button id="addQuestion" style="display: none;">Ajouter une Question</button>
+        </section>
 
-  </body>
+        <section id="answerSection" style="display: none;">
+            <h2>Répondre à un Questionnaire</h2>
+            <button id="loadAnswerQuizzes">Afficher les Questionnaires</button>
+            <div id="quizList"></div>
+            <div id="quizQuestions"></div>
+            <button id="submitAnswers">Soumettre les Réponses</button>
+        </section>
+    </div>
+
+    <footer>
+        <h4>© Département Informatique ⚛ IUT d'Orléans</h4>
+    </footer>
+</body>
 </html>
